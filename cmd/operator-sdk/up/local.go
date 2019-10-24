@@ -16,15 +16,6 @@ package up
 
 import (
 	"fmt"
-	"os"
-	"os/exec"
-	"os/signal"
-	"path"
-	"path/filepath"
-	"runtime"
-	"strings"
-	"syscall"
-
 	"github.com/operator-framework/operator-sdk/internal/pkg/scaffold"
 	k8sInternal "github.com/operator-framework/operator-sdk/internal/util/k8sutil"
 	"github.com/operator-framework/operator-sdk/internal/util/projutil"
@@ -35,6 +26,14 @@ import (
 	"github.com/operator-framework/operator-sdk/pkg/k8sutil"
 	"github.com/operator-framework/operator-sdk/pkg/log/zap"
 	sdkVersion "github.com/operator-framework/operator-sdk/version"
+	"os"
+	"os/exec"
+	"os/signal"
+	"path"
+	"path/filepath"
+	"runtime"
+	"strings"
+	"syscall"
 
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
