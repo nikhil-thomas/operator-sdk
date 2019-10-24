@@ -26,6 +26,7 @@ import (
 	"strings"
 	"syscall"
 	"testing"
+	"time"
 
 	"github.com/operator-framework/operator-sdk/internal/pkg/scaffold"
 	"github.com/operator-framework/operator-sdk/internal/util/projutil"
@@ -55,6 +56,9 @@ func MainEntry(m *testing.M) {
 	localOperator := flag.Bool(LocalOperatorFlag, false, "enable if operator is running locally (not in cluster)")
 	localOperatorArgs := flag.String(LocalOperatorArgs, "", "flags that the operator needs (while using --up-local). example: \"--flag1 value1 --flag2=value2\"")
 	flag.Parse()
+	log.Info("################################################################")
+	log.Info("#########", "test")
+	log.Info("################################################################")
 	// go test always runs from the test directory; change to project root
 	err := os.Chdir(*projRoot)
 	if err != nil {
@@ -84,6 +88,10 @@ func MainEntry(m *testing.M) {
 		localCmd = exec.Command(outputBinName, args...)
 		localCmd.Stdout = &localCmdOutBuf
 		localCmd.Stderr = &localCmdErrBuf
+		log.Info("################################################################")
+		log.Info("#########", localCmd.Env)
+		log.Info("################################################################")
+		time.Sleep(1 * time.Minute)
 		c := make(chan os.Signal)
 		signal.Notify(c, os.Interrupt, syscall.SIGTERM)
 		go func() {
@@ -114,7 +122,7 @@ func MainEntry(m *testing.M) {
 			if err != nil {
 				log.Fatalf("Failed to run operator locally: (%v)", err)
 			}
-			log.Info("Started local operator")
+			log.Info("Started local operator1")
 		}
 		exitCode := m.Run()
 		if *localOperator {
