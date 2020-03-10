@@ -493,6 +493,8 @@ Runs the tests locally
 * `--local-operator-flags` string - flags that the operator needs, while using --up-local (e.g. \"--flag1 value1 --flag2=value2\")
 * `--no-setup` - disable test resource creation
 * `--image` string - use a different operator image from the one specified in the namespaced manifest
+* --operator-namespace string     Namespace where the operator will be deployed, CRs will be created and tests will be executed (By default it will be in the default namespace defined in the kubeconfig)
+* --watch-namespace string        (only valid with --up-local) Namespace where the operator watches for changes. Explicitly set to empty string to watch all namespaces (defaults to the operatorNamespace).
 * `-h, --help` - help for local
 
 ##### Use
